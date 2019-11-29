@@ -44,10 +44,10 @@ public class PlayerCommands implements CommandExecutor {
 
                     } else if (args[0].equalsIgnoreCase("setSpawn")) {
                         kitPvpPlugin.getRandomSpawn().add(player.getLocation());
-                        player.sendMessage(ChatColor.GOLD + "Spawn has been set!");
+                        player.sendMessage(ChatColor.GOLD + "Random spawn has been set!");
 
                     } else if (args[0].equalsIgnoreCase("list")) {
-                        StringBuilder spawnListBuilder = new StringBuilder("-=- Spawn list -=- \n");
+                        StringBuilder spawnListBuilder = new StringBuilder("-=- Random spawn list -=- \n");
                         if (kitPvpPlugin.getRandomSpawn() != null && kitPvpPlugin.getRandomSpawn().size() != 0) {
                             int index = 0;
                             for (Location location : kitPvpPlugin.getRandomSpawn()) {

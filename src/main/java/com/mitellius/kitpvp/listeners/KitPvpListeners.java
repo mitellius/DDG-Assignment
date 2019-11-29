@@ -108,25 +108,28 @@ public class KitPvpListeners implements Listener {
         if (event.getView().getTitle().equals(ChatColor.translateAlternateColorCodes('&', ChatColor.DARK_PURPLE + "Kit Selector Menu!"))) {
             if (event.getCurrentItem() != null) {
                 event.setCancelled(true);
+                if(kitPvpPlugin.getRandomSpawn().size() == 0){
+                    player.sendMessage(ChatColor.RED + "No randoms spawns have been set yet!");
+                } else {
+                    switch (event.getCurrentItem().getType()) {
+                        case BOW:
+                            KitSelector.giveArcherKit(player);
+                            player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
+                            break;
 
-                switch (event.getCurrentItem().getType()) {
-                    case BOW:
-                        KitSelector.giveArcherKit(player);
-                        player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
-                        break;
+                        case IRON_CHESTPLATE:
+                            KitSelector.giveTankKit(player);
+                            player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
+                            break;
 
-                    case IRON_CHESTPLATE:
-                        KitSelector.giveTankKit(player);
-                        player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
-                        break;
+                        case IRON_SWORD:
+                            KitSelector.giveFighterKit(player);
+                            player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
+                            break;
 
-                    case IRON_SWORD:
-                        KitSelector.giveFighterKit(player);
-                        player.teleport(kitPvpPlugin.getRandomSpawn().get(randomInt));
-                        break;
-
-                    default:
-                        return;
+                        default:
+                            return;
+                    }
                 }
                 player.closeInventory();
             }
