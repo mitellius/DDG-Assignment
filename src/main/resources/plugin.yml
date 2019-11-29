@@ -1,0 +1,8 @@
+name: KitPvp
+version: ${project.version}
+main: com.mitellius.kitpvp.KitPvpPlugin
+api-version: 1.13
+commands:
+  spawn:
+    description: Gives the subcommands.
+    usage: <command> []
